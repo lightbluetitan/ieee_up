@@ -1,0 +1,52 @@
+---
+title: "Bar Charts"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    social: ["facebook","twitter","linkedin"]
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+library(ggplot2)
+
+library(lattice)
+```
+
+Column {data-width=333}
+-----------------------------------------------------------------------
+
+### barplot()
+
+```{r}
+x <- table(mtcars$cyl)
+
+colores <- c("orange","blue","purple")
+
+barplot(x,xlab="Cilindros",ylab="Frecuencias",main="Número de Cilindros",col=colores)
+
+```
+
+Column {data-width=333}
+-----------------------------------------------------------------------
+
+### ggplot2
+
+```{r}
+ggplot(mtcars,aes(cyl)) + geom_bar(fill=colores) + labs(x="Cillindros",y="Frecuencias",title="Número de Cilindros") + theme_dark()
+
+```
+
+Column {data-width=333}
+-----------------------------------------------------------------------
+
+### lattice
+
+```{r}
+barchart(x,xlab="Cilindros",ylab="Frecuencias",main="Número de Cilindros",col=colores,horizontal=FALSE)
+```
+
+

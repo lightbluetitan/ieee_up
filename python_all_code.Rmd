@@ -1,0 +1,102 @@
+---
+title: "Bar Charts - Diagramas de Barras"
+author: "Renzo Cáceres Rossi"
+date: "2022/06/15"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+    toc_float: yes
+    code_download: yes
+subtitle: RMarkdown - Markdown
+---
+
+```{r setup,include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Bar Charts - Matplotlib_001
+
+**Matplotlib** es una librería del lenguaje de programación Python, que nos permite crear gráficos estadísticos de gran calidad, **RMarkdown** nos permite trabajar con otros lenguajes de programación tales como **C++, SQL, Julia**, entre muchos otros; a continuación mostramos un diagrama de barras (**Bar Chart**) creado con Matplotlib.
+
+```{python,fig.align='center',results='hide',collapse=TRUE}
+import matplotlib.pyplot as plt
+ 
+
+eje_x = ['Python', 'R', 'Node.js', 'PHP']
+ 
+
+eje_y = [50,20,35,47]
+ 
+
+plt.bar(eje_x, eje_y)
+ 
+
+plt.ylabel('Cantidad de usuarios')
+ 
+
+plt.xlabel('Lenguajes de programación')
+ 
+
+plt.title('Usuarios de lenguajes de programación')
+ 
+
+plt.show()
+
+```
+
+
+## Bar Charts - Matplotlib_002
+
+```{python,fig.align='center',results='hide',collapse=TRUE}
+import matplotlib.pyplot as plt
+ 
+
+eje_x = ['Prog.', 'Ciencia', 'Mat.', 'Ing.']
+ 
+
+eje_y = [76,31,45,57]
+ 
+## Creamos Gráfica y ponesmos las barras de color verde
+plt.barh(eje_x, eje_y, color="green")
+plt.ylabel('Empleados')
+plt.xlabel('Habilidades')
+plt.title('Habilidades')
+plt.show()
+```
+
+## Bar Charts - Matplotlib_003
+
+
+```{python,fig.align='center',results='hide',collapse=TRUE}
+import numpy as np
+import matplotlib.pyplot as plt
+ 
+serie_1 = [406, 387, 442, 457, 485]
+serie_2 = [421, 453, 435, 478, 512]
+ 
+ 
+numero_de_grupos = len(serie_1)
+indice_barras = np.arange(numero_de_grupos)
+ancho_barras =0.35
+ 
+plt.bar(indice_barras, serie_1, width=ancho_barras, label='Hombres')
+plt.bar(indice_barras + ancho_barras, serie_2, width=ancho_barras, label='Mujeres')
+plt.legend(loc='best')
+## Se colocan los indicadores en el eje x
+plt.xticks(indice_barras + ancho_barras, ('2017', '2018', '2019', '2020','2021'))
+ 
+plt.ylabel('Numero de habitantes')
+plt.xlabel('Año')
+plt.title('Numero de habitantes por genero')
+ 
+plt.show()
+```
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+---
+title: "Sintaxis RMarkdown"
+author: "RCR"
+date: "2022/07/01"
+subtitle: RMarkdown - Markdown
+---
+
+```{r setup,include=FALSE}
+
+library(ggplot2)
+
+library(lattice)
+
+library(vembedr)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Bar Chart - barplot()
+
+La función  `barplot()` nos permite crear diagramas de barras (**Bar Charts**) en el lenguaje de programación R, utilizaremos la variable cyl (**cilindros**) para crear el gráfico estadístico reespectivo, como se muestra en la siguiente imagen.
+
+```{r barplot,fig.align='center'}
+x <- table(mtcars$cyl)
+
+colores <- c("orange","blue","purple")
+
+barplot(x,xlab="Cilindros",ylab="Frecuencias",main="Número de Cilindros",col=colores)
+
+```
+
+## Bar Chart - ggplot2
+
+**ggplot2** es un paquete del lenguaje de programación que nos permite crear gráficos estadísticos de gran calidad, haremos uso de la variable cyl (**cilindros**) para la creación del gráfico estadístico respectivo, como se muestra a continuación.
+
+```{r ggplot2,fig.align='center'}
+ggplot(mtcars,aes(cyl)) + geom_bar(fill=colores) + labs(x="Cillindros",y="Frecuencias",title="Número de Cilindros") + theme_dark()
+
+```
+
+
+## Bar Chart - Lattice
+
+**Lattice** es un paquete del lenguaje de programación R, que nos permite crear gráficos estadísticos de muy buena calidad, nos enfocaremos en la variable cyl (**cilindros**) para la creación del gráfico estadístico respectivo, como se muestra a continuación.
+
+
+```{r lattice,fig.align='center'}
+barchart(x,xlab="Cilindros",ylab="Frecuencias",main="Número de Cilindros",col=colores,horizontal=FALSE)
+
+```
+
+
+## Bar Charts - Matplotlib
+
+**Matplotlib** es una librería del lenguaje de programación Python, que nos permite crear gráficos estadísticos de gran calidad, **RMarkdown** nos permite trabajar con otros lenguajes de programación tales como **C++, SQL, Julia**, entre muchos otros; a continuación mostramos un diagrama de barras (**Bar Chart**) creado con Matplotlib.
+
+```{python,results='hide',collapse=TRUE}
+import matplotlib.pyplot as plt
+ 
+
+eje_x = ['Python', 'R', 'Node.js', 'PHP']
+ 
+
+eje_y = [50,20,35,47]
+ 
+
+plt.bar(eje_x, eje_y)
+ 
+
+plt.ylabel('Cantidad de usuarios')
+ 
+
+plt.xlabel('Lenguajes de programación')
+ 
+
+plt.title('Usuarios de lenguajes de programación')
+ 
+
+plt.show()
+
+```
+
+
+
+
+
+
+
+

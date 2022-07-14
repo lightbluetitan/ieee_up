@@ -1,0 +1,160 @@
+names(knitr::knit_engines$get())
+
+https://drive.google.com/drive/folders/1umVRCxYmXyPn2H4NLLXIAun_VcuerBln?usp=sharing
+
+## Diagramas de Barras - Bar Charts
+
+El diagrama de barras (**Bar Chart**) es un gráfico estadístico que nos permite representar la distribución de frecuencias de variables cualitativas y cuantitativas discretas; nuestro objetivo es pasar del lápiz y papel al uso de los lenguajes de programación R y Python, compartimos la siguiente imagen como referencia.
+
+<!-- RMarkdown permite añadir HTML tags dentro de su sintaxis para el formateo de nuestro documento -->
+
+
+## Data Set - mtcars
+
+**mtcars** es un data set que ya viene precargado al momento de instalar el **lenguaje de programación R** en nuestro sistema, haremos uso de dicho data set para la creación de distintos diagramas de barras, de las 11 variables y 32 observaciones que lo componen nos enfocaremos en las variables **cyl** (cilindro) y **gear** (engranajes) como se muestra a continuación.
+
+
+## Bar Chart - barplot()
+
+La función  `barplot()` nos permite crear diagramas de barras (**Bar Charts**) en el lenguaje de programación R, utilizaremos la variable cyl (**cilindros**) para crear el gráfico estadístico reespectivo, como se muestra en la siguiente imagen.
+
+
+x <- table(mtcars$cyl)
+
+colores <- c("orange","blue","purple")
+
+barplot(x,xlab="Cilindros",ylab="Frecuencias",main="Número de Cilindros",col=colores)
+
+--
+## Bar Chart - ggplot2
+
+**ggplot2** es un paquete del lenguaje de programación que nos permite crear gráficos estadísticos de gran calidad, haremos uso de la variable cyl (**cilindros**) para la creación del gráfico estadístico respectivo, como se muestra a continuación.
+
+
+ggplot(mtcars,aes(cyl)) + geom_bar(fill=colores) + labs(x="Cillindros",y="Frecuencias",title="Número de Cilindros") + theme_dark()
+
+--
+
+## Bar Chart - Lattice
+
+**Lattice** es un paquete del lenguaje de programación R, que nos permite crear gráficos estadísticos de muy buena calidad, nos enfocaremos en la variable cyl (**cilindros**) para la creación del gráfico estadístico respectivo, como se muestra a continuación.
+
+barchart(x,xlab="Cilindros",ylab="Frecuencias",main="Número de Cilindros",col=colores,horizontal=FALSE)
+
+--
+
+y <- table(mtcars$gear)
+
+par(mfrow=c(1,2))
+
+barplot(x,xlab="Cilindros",ylab="Frecuencias",main="Número de Cilindros",col=colores)
+
+barplot(y,xlab="Engranajes",ylab="Frecuencias",main="Número de Engranajes",col=rainbow(3))
+
+--
+
+## Bar Charts - Matplotlib
+
+**Matplotlib** es una librería del lenguaje de programación Python, que nos permite crear gráficos estadísticos de gran calidad, **RMarkdown** nos permite trabajar con otros lenguajes de programación tales como **C++, SQL, Julia**, entre muchos otros; a continuación mostramos un diagrama de barras (**Bar Chart**) creado con Matplotlib.
+
+import matplotlib.pyplot as plt
+ 
+
+eje_x = ['Python', 'R', 'Node.js', 'PHP']
+ 
+
+eje_y = [50,20,35,47]
+ 
+
+plt.bar(eje_x, eje_y)
+ 
+
+plt.ylabel('Cantidad de usuarios')
+ 
+
+plt.xlabel('Lenguajes de programación')
+ 
+
+plt.title('Usuarios de lenguajes de programación')
+ 
+
+plt.show()
+
+--
+
+## YouTube - Tutorial
+
+Compartimos el siguiente tutorial tomado de la plataforma **YouTube** que muestra como crear diagramas de barras (**Bar Charts**) haciendo uso de la función `barplot()` y el paquete **ggplot2** del lenguaje de programación R.
+
+embed_url("https://www.youtube.com/watch?v=EkxRj02iaLk&t=6s") %>% 
+  use_align("center")
+
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>
+
+“La tecnología no es nada. Lo importante es que tengas fe en la gente, que sean básicamente buenas e inteligentes, y si les das herramientas, harán cosas maravillosas con ellas”.
+
+
+import matplotlib.pyplot as plt
+ 
+## Declaramos valores para el eje x
+eje_x = ['Python', 'R', 'Node.js', 'PHP']
+ 
+## Declaramos valores para el eje y
+eje_y = [50,20,35,47]
+ 
+## Creamos Gráfica
+plt.bar(eje_x, eje_y)
+ 
+## Legenda en el eje y
+plt.ylabel('Cantidad de usuarios')
+ 
+## Legenda en el eje x
+plt.xlabel('Lenguajes de programación')
+ 
+## Título de Gráfica
+plt.title('Usuarios de lenguajes de programación')
+ 
+## Mostramos Gráfica
+plt.show()
+
+---
+
+import matplotlib.pyplot as plt
+ 
+
+eje_x = ['Prog.', 'Ciencia', 'Mat.', 'Ing.']
+ 
+
+eje_y = [76,31,45,57]
+ 
+## Creamos Gráfica y ponesmos las barras de color verde
+plt.barh(eje_x, eje_y, color="green")
+plt.ylabel('Empleados')
+plt.xlabel('Habilidades')
+plt.title('Habilidades')
+plt.show()
+
+---
+
+import numpy as np
+import matplotlib.pyplot as plt
+ 
+serie_1 = [406, 387, 442, 457, 485]
+serie_2 = [421, 453, 435, 478, 512]
+ 
+ 
+numero_de_grupos = len(serie_1)
+indice_barras = np.arange(numero_de_grupos)
+ancho_barras =0.35
+ 
+plt.bar(indice_barras, serie_1, width=ancho_barras, label='Hombres')
+plt.bar(indice_barras + ancho_barras, serie_2, width=ancho_barras, label='Mujeres')
+plt.legend(loc='best')
+## Se colocan los indicadores en el eje x
+plt.xticks(indice_barras + ancho_barras, ('2017', '2018', '2019', '2020','2021'))
+ 
+plt.ylabel('Numero de habitantes')
+plt.xlabel('Año')
+plt.title('Numero de habitantes por genero')
+ 
+plt.show()
